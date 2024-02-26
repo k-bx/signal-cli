@@ -282,7 +282,7 @@ public class ReceiveHelper {
         final var exception = result.second();
 
         if (exception instanceof UntrustedIdentityException) {
-            if (System.currentTimeMillis() - envelope.getServerDeliveredTimestamp() > 1000L * 60 * 60 * 24 * 30) {
+            if (System.currentTimeMillis() - envelope.getServerDeliveredTimestamp() > 1000L * 60 * 60) {
                 // Envelope is more than a month old, cleaning up.
                 cachedMessage.delete();
                 return null;
